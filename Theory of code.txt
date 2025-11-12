@@ -1,0 +1,216 @@
+1 title.Library Book Borrowing Record Management using Python
+Objective:
+To write a Python program that manages the borrowing records of library books and performs operations like: - Computing average books borrowed by members - Finding most/least borrowed books - Counting members who borrowed zero books - Finding the mode of book borrow counts
+Problem Statement:
+Write a Python program to manage the borrowing records of books in a library. Implement
+the following functionalities:
+• Compute the average number of books borrowed by all library members.
+• Find the book with the highest and lowest number of borrowings in the library.
+• Count the number of members who have not borrowed any books (denoted by a
+borrow count of 0).
+• Display the most frequently borrowed book (i.e., the mode of borrow counts).
+After performing, determine the time and Space complexity of each operation
+Tools Used:
+- Programming Language: Python 3 - Data Structures: Dictionary, List, Counter from collections
+Theory:
+In a library system, it is essential to maintain and analyze the borrowing records of books and users. These records help in: - Understanding the reading habits of members - Identifying popular and rarely used books - Managing inventory and planning future purchases To manage this efficiently, data structures like dictionaries, lists, and counters in Python are used. Key Concepts: - Dictionary: Stores data in key-value pairs. Used to map each member to their borrow count, and each book to its total borrow count. - List Comprehension: Used to extract specific elements like members with 0 borrow count, or books with max borrowings. - Counter (from collections module): Helps find frequency (mode) of borrow counts for
+
+
+
+
+Experiment no 2
+Title:
+Search Techniques in an E-commerce System Using Python
+Objective:
+To implement and compare Linear Search and Binary Search algorithms to check whether a customer account ID exists in a given list.
+Problem Statement:
+In an e-commerce system, customer account IDs are stored in a list, and you are tasked with
+writing a program that implements the following:
+• Linear Search: Check if a particular customer account ID exists in the list.
+• Binary Search: Implement Binary search to find if a customer account ID exists, improving the search efficiency over the basic linear
+Tools/Language Used:
+Programming Language: Python 3 IDE: Any (IDLE, Jupyter, VS Code, etc.)
+Algorithm / Explanation:
+1. Linear Search: - Traverse each element in the list. - Compare each element with the target. - If a match is found, return the index. - Time Complexity: O(n)
+2. Binary Search: - Sort the list. - Use divide-and-conquer strategy: - Compare middle element with the target. - If not equal, search either left or right sublist. - Time Complexity: O(log n) - Only works on sorted lists.
+Python Program:
+def linear_search(account_list, target): for index, account_id in enumerate(account_list): if account_id == target: return index return -1 def binary_search(account_list, target): account_list.sort() low = 0 high = len(account_list) - 1 while low <= high: mid = (low + high) // 2 if account_list[mid] == target: return mid elif account_list[mid] < target: low = mid + 1 else: high = mid - 1 return -1 n = int(input("Enter the number of customer account IDs: ")) customer_accounts = [] print("Enter the customer account IDs:") for i in range(n): account_id = int(input(f"Account ID {i+1}: ")) customer_accounts.append(account_id) search_id = int(input("Enter the Customer Account ID to search: ")) position_linear = linear_search(customer_accounts, search_id) if position_linear != -1: print(f"Linear Search: ID {search_id} found at index {position_linear}") else: print(f"Linear Search: ID {search_id} not found.") position_binary = binary_search(customer_accounts.copy(), search_id) if position_binary != -1: print(f"Binary Search: ID {search_id} found at index {position_binary} in sorted list") else: print(f"Binary Search: ID {search_id} not found in sorted list.")
+Input/Output:
+Sample Input: Enter the number of customer account IDs: 5 Enter the customer account IDs: Account ID 1: 105 Account ID 2: 210 Account ID 3: 150 Account ID 4: 300 Account ID 5: 180 Enter the Customer Account ID to search: 150
+Sample Output: Linear Search: ID 150 found at index 2 Binary Search: ID 150 found at index 0 in sorted list
+Time and Space Complexity Analysis:
+Search Type
+Time Complexity
+Space Complexity
+Linear Search
+O(n)
+O(1)
+Binary Search
+O(log n)
+O(1)
+Conclusion:
+Linear Search is simple and effective for small or unsorted lists. Binary Search is more efficient for large sorted lists, offering faster results. This experiment demonstrates the importance of choosing the right algorithm based on data structure and size.
+
+
+
+
+
+
+
+
+EXPERIMENT NO 3
+Experiment Title:
+Implementing a real-time undo/redo system for a text editing application using a Stack data
+structure. The system should support the following operations:
+• Make a Change: A new change to the document is made.
+• Undo Action: Revert the most recent change and store it for potential redo.
+• Redo Action: Reapply the most recently undone action.
+• Display Document State: Show the current state of the document after undoing or
+redoing an action
+Objective:
+To implement a text editing application that supports real-time Undo and Redo operations using the Stack data structure by utilizing push and pop operations.
+Theory:
+In a text editor, users often need to revert changes (undo) or reapply changes (redo). This can be efficiently implemented using two Stacks:
+● Undo Stack stores all previous states.
+● Redo Stack stores the states that have been undone.
+When a new change is made:
+● Push current state onto the Undo Stack.
+● Clear the Redo Stack (since redo history becomes invalid).
+When performing Undo:
+● Pop the last state from the Undo Stack and push current state onto Redo Stack.
+When performing Redo:
+● Pop from the Redo Stack and push the current state onto the Undo Stack.
+Software & Hardware Requirements:
+● Software: Python 3.x
+● Hardware: Standard PC with keyboard input
+Algorithm Steps:
+1. Initialize two empty stacks: undo_stack and redo_stack.
+2. Initialize an empty string current_state.
+3. On push (new change):
+○ Push current_state to undo_stack.
+○ Update current_state with new input.
+○ Clear redo_stack.
+4. On pop_undo:
+○ Push current_state to redo_stack.
+○ Pop from undo_stack and assign to current_state.
+5. On pop_redo:
+○ Push current_state to undo_stack.
+○ Pop from redo_stack and assign to current_state.
+6. Display current_state when required.
+Conclusion:
+Using two stacks (undo_stack and redo_stack), we can effectively manage the document's state history and implement Undo/Redo functionalities using basic push/pop operations. This approach demonstrates efficient use of data structures in real-world application
+
+
+
+
+
+
+
+
+
+Experiment no – 4
+Experiment Title:
+Real-Time Event Processing System Using Queue Data Structure
+Objective:
+To implement a real-time event processing system using a queue data structure that supports the following operations:
+● Adding an event
+● Processing the next (oldest) event
+● Displaying all pending events
+● Canceling a pending event
+Title:
+Implement a real-time event processing system using a Queue data structure. The system
+should support the following features:
+• Add an Event: When a new event occurs, it should be added to the event queue.
+• Process the Next Event: The system should process and remove the event that has
+been in the queue the longest.
+• Display Pending Events: Show all the events currently waiting to be processed.
+• Cancel an Event: An event can be canceled if it has not been processed.
+Theory:
+A queue is a linear data structure that follows the FIFO (First In, First Out) principle. It is widely used in scheduling systems, printers, CPU task scheduling, and real-time event processing.
+In this experiment, the queue helps to manage events in the order they occur:
+● New events are added at the rear of the queue.
+● Processing is done from the front of the queue.
+● Pending events can be viewed without processing them.
+● Canceling an event removes it from the queue before it's processed.
+Tools & Technology Used:
+● Language: Python 3.x
+● Data Structure: deque from Python’s collections module
+Algorithm / Steps:
+1. Initialize an empty queue using collections.deque.
+2. Provide a menu with the following options:
+o Add a new event
+o Process the next event
+o Display all pending events
+o Cancel an event
+o Exit the program
+3. Add Event: Append the event to the end of the queue.
+4. Process Next Event: Remove and display the event at the front of the queue.
+5. Display Events: Print all events from the front to rear of the queue.
+6. Cancel Event: Remove a specific event by name from the queue.
+7. Exit: Stop the program.
+Conclusion:
+This experiment successfully demonstrates the use of the queue data structure for managing real-time events. By implementing core queue operations (enqueue, dequeue, and remove), the system efficiently handles dynamic user-driven inputs, simulating a real-world event scheduler.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment No 6 (Linked List)
+Title:
+Student Record Management System using Linked List
+Problem Statement:
+Create a Student Record Management System using linked list
+• Use a singly/doubly linked list to store student data (Roll No, Name, Marks).
+• Perform operations: Add, Delete, Update, Search, and Sort.
+• Display records in ascending/descending order based on marks or roll number.
+Objectives:
+● To understand and implement linked list data structure.
+● To perform dynamic record management (insertion, deletion, updation).
+● To apply searching and sorting techniques on linked list data.
+● To develop a menu-driven application for user interaction.
+Theory:
+A linked list is a dynamic linear data structure where elements are stored in nodes connected via pointers.
+Node Structure:
+● Data fields: Roll No, Name, Marks
+● Pointers: next (to next node) and prev (to previous node in case of doubly linked list)
+Here, a Doubly Linked List is used to allow easy traversal and modification.
+Operations Implemented:
+1. Add Student: Insert a record at the end.
+2. Display Records: Traverse and print all student records.
+3. Delete Record: Remove a record by Roll No.
+4. Update Record: Modify student details by Roll No.
+5. Search Record: Find a student by Roll No.
+6. Sort Records: Sort records by Roll No or Marks (ascending/descending).
+Algorithm:
+1. Add Student:
+1. Create a new node with Roll No, Name, Marks.
+2. If list is empty → set head to new node.
+3. Else traverse to last node → attach new node at end.
+2. Delete Student (by Roll No):
+1. Traverse list until Roll No matches.
+2. Adjust previous and next links to bypass node.
+3. Delete node.
+3. Update Student:
+1. Traverse list to find Roll No.
+2. If found, update Name/Marks.
+4. Search Student:
+1. Traverse list sequentially.
+2. If Roll No matches → display details.
+5. Sort Records:
+1. Apply bubble sort on linked list nodes.
+2. Swap Roll No/Marks accordingly.
+Conclusion:
+● A Student Record Management System was successfully implemented using a Doubly Linked List.
+● Operations like Add, Delete, Update, Search, Sort, and Display were implemented.
+● The practical helped in understanding dynamic memory management and real-life applications of linked list.
